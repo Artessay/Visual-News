@@ -1,3 +1,12 @@
+li {
+  list-style: none;
+}
+/* @font-face {
+  font-family: electronicFont;
+  src: url(./font/DS-DIGIT.TTF);
+} */
+
+
 .App {
   text-align: center;
 }
