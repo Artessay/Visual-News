@@ -43,6 +43,19 @@ li {
   background-color: rgb(214, 255, 205);
 }
 
+/* .view {
+  position: relative;
+  top: 10rem;
+  left: 15%;
+} */
+
+.headline {
+  position: 'absolute';
+  top: 70;
+  bottom: 400;
+  left: 15%;
+  right: 70;
+}
 
 @keyframes App-logo-spin {
   from {
