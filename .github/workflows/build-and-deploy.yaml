@@ -1,0 +1,31 @@
+name: React Build and Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    # fetch code
+    - name: Checkout 🛎️
+      uses: actions/checkout@v3
+
+    # install dependency and build
+    - name: Install and Build 🔧
+      run: |
+        npm install
+        npm run-script build
+    
+    # deploy to github pages
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BASE_BRANCH: main
+        BRANCH: github-pages
+        FOLDER: build
+        CLEAN: true
+        # uses: JamesIves/github-pages-deploy-action@v4
+        # with:
+        #   folder: build # The folder the action should deploy.

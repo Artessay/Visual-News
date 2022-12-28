@@ -32,14 +32,12 @@ const useStyles = makeStyles(theme => ({
   videoPanel: {
       position: 'relative',
       top: 40,
-      // bottom: 70,
       left: 200,
       width: 750,
   },
   gameflow: {
       position: 'relative',
       top: 70,
-      height: 100,
       left: 200,
       width: 750,
   },
@@ -84,7 +82,7 @@ function App() {
           <div className={clsx(classes.view, classes.videoPanel)}>
             <video 
               src={require('./video/light1.mp4')} 
-              controls 
+              controls // 控制panel current
               width='100%'
             >
                 video
@@ -93,6 +91,9 @@ function App() {
           <div className={clsx(classes.view, classes.gameflow)}>
             <LineGameflow></LineGameflow>
           </div>
+        </div>
+        <div>
+          <br></br>
         </div>
       </body>
     </div>

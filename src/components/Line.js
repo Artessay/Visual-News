@@ -1,4 +1,5 @@
-import React,{Component} from 'react'
+import React,  {Component} from 'react'
+import { useContext } from 'react';
 import {Card} from 'antd'
 //按需导入
 import echarts from 'echarts/lib/echarts'
@@ -11,13 +12,27 @@ import 'echarts/lib/component/legend'
 import 'echarts/lib/component/markPoint'
 import ReactEcharts from 'echarts-for-react'
 
-class LineGameflow extends Component {
+import { store } from "../store";
+import dataGameflow from '../data/gameflow'
 
-    componentWillMount(){
-        // echarts.registerTheme("ThemeStyle", echartTheme) //注入主题
-    }
-
-    getOption = ()=>{
+function LineGameflow() {
+    // const {state, dispatch} = useContext(store);
+    
+    const getOption = () => {
+        const plays = dataGameflow.plays || [];
+        var homescore = [];
+        var awayscore = [];
+        var texts = [];
+        var xaxis = [];
+        var i = 1;
+        
+        for (const play of plays) {
+            homescore.push(play.homeScore);
+            awayscore.push(play.awayScore);
+            xaxis.push(play.sequenceNumber);
+            ++i;
+        }
+        
         let option = {
             title: {  //标题
                 text: 'Gameflow',
@@ -26,32 +41,44 @@ class LineGameflow extends Component {
                     color: '#ccc'
                 }
             },
+            legend: {
+                data: ['homescore', 'awayscore'],
+                top: 20,
+                right: 50,
+            },
             tooltip:{ //提示框组件
                 trigger: 'axis'
             },
             xAxis: { //X轴坐标值
-                data: ['星期一','星期二','星期三','星期四','星期五','星期六','星期日']
+                data: xaxis
             },
             yAxis: {
                 type: 'value' //数值轴，适用于连续数据
             },
             series : [
                 {
-                    name:'订单量', //坐标点名称
+                    name:'homescore', //坐标点名称
                     type:'line', //线类型
-                    data:[1000, 1500, 2000, 3000, 2500, 1800, 1200] //坐标点数据
+                    color: 'red',
+                    data: homescore //坐标点数据
+                },
+                {
+                    name:'awayscore', //坐标点名称
+                    type:'line', //线类型
+                    color: "#00a7d0",
+                    data: awayscore  //坐标点数据
                 }
             ]
         }
         return option;
     }
 
-    render() {
-        return (
-            <Card.Grid className="line_a">
-                <ReactEcharts option={this.getOption()} theme="ThemeStyle" />
-            </Card.Grid>
-        )
-    }
+    
+    return (
+        <Card.Grid className="line_a">
+            <ReactEcharts option={getOption()} />
+        </Card.Grid>
+    )
 }
+
 export default LineGameflow;

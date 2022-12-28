@@ -1,7 +1,7 @@
 // 本文件处理数据逻辑
 
 import React, {createContext, useReducer, useEffect} from 'react';
-import {fetchCsvData} from "./api";
+import {fetchCsvData, fetchJsonData} from "./api";
 import initialState from './data';
 import reducer from './reducer';
 
@@ -14,14 +14,23 @@ function StateProvider({children}) {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     // 初始化时，读取本地数据
+    const files = ['gameflow'];
     useEffect(() => {
-        fetchCsvData('./data.csv')
-          .then(res => {
-              dispatch({
-                  type: 'init',
-                  payload: res
-              })
-          })
+        // fetchCsvData('./data.csv')
+        //       .then(res => {
+        //           dispatch({
+        //               type: 'init',
+        //               payload: res
+        //           })
+        for (const file of files)
+            fetchJsonData(`./data/${file}.json`)
+            .then(res => {
+                dispatch({
+                    type: 'init',
+                    key: file,
+                    payload: res
+                })
+            })
     }, [])
 
     // 为子元素包裹上数据的上下文环境，方便所有子元素读取
