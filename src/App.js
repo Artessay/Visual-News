@@ -6,7 +6,6 @@ import Headline from './components/Headline';
 import clsx from 'clsx';
 import {makeStyles} from "@material-ui/core";
 import Sidebar from './components/Sidebar';
-import LineChart from './components/LineChart';
 import LineGameflow from './components/Line';
 import ColorButtonHome from './components/ColorButtonHome';
 import ColorButtonAway from './components/ColorButtonAway';
@@ -38,6 +37,7 @@ const useStyles = makeStyles(theme => ({
       width: 750,
       left: 200,
       right: 300,
+      textAlignVertical: 'center',
   },
   videoPanel: {
       position: 'relative',
@@ -110,6 +110,9 @@ function App() {
           </div>
           <div className={clsx(classes.view, classes.gameflow)}>
             <LineGameflow></LineGameflow>
+          </div>
+          <div>
+
           </div>
           <div>
             <br></br>

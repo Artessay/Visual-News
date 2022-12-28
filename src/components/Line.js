@@ -1,8 +1,5 @@
-import React,  {Component} from 'react'
-import { useContext } from 'react';
+import React, { useContext } from 'react'
 import {Card} from 'antd'
-//按需导入
-import echarts from 'echarts/lib/echarts'
 //导入折线图
 import 'echarts/lib/chart/line'
 // 引入提示框和标题组件
@@ -12,11 +9,11 @@ import 'echarts/lib/component/legend'
 import 'echarts/lib/component/markPoint'
 import ReactEcharts from 'echarts-for-react'
 
-import { StateProvider, store } from "../store";
+import { store } from "../store";
 import dataGameflow from '../data/gameflow'
 
 function LineGameflow() {
-    const {state, dispatch} = useContext(store);
+    const {state, } = useContext(store);
     
     const getOption = () => {
         const plays = dataGameflow.plays || [];
@@ -24,13 +21,12 @@ function LineGameflow() {
         var awayscore = [];
         var texts = [];
         var xaxis = [];
-        var i = 1;
         
         for (const play of plays) {
             homescore.push(play.homeScore);
             awayscore.push(play.awayScore);
             xaxis.push(play.sequenceNumber);
-            ++i;
+            texts.push(play.text);
         }
         
         let option = {
@@ -47,7 +43,10 @@ function LineGameflow() {
                 right: 50,
             },
             tooltip:{ //提示框组件
-                trigger: 'axis'
+                trigger: 'axis',
+                formatter: function(arg) {
+                    return `{a} <br/>{b} : {c} ({d}%)`
+                }
             },
             xAxis: { //X轴坐标值
                 data: xaxis
