@@ -6,6 +6,8 @@ import Headline from './components/Headline';
 import clsx from 'clsx';
 import {makeStyles} from "@material-ui/core";
 import Sidebar from './components/Sidebar';
+import LineChart from './components/LineChart';
+import LineGameflow from './components/Line';
 
 // 这是JSS的写法，相当于声明了一些css的类
 const useStyles = makeStyles(theme => ({
@@ -34,12 +36,12 @@ const useStyles = makeStyles(theme => ({
       left: 200,
       width: 750,
   },
-  controlPanel: {
-      position: 'absolute',
+  gameflow: {
+      position: 'relative',
       top: 70,
       height: 100,
-      left: 70,
-      width: 100,
+      left: 200,
+      width: 750,
   },
   detailView: {
       position: 'absolute',
@@ -60,8 +62,8 @@ function App() {
   // http.createServer(
   //   function(__req, __res) {
   //     fs.createReadStream('./video/cast1.mp4').pipe(__res)
-  //   }.listen(5842, function() {
-  //     console.log('server is running at http://localhost:5842')
+  //   }.listen(3000, function() {
+  //     console.log('server is running at http://localhost:3000')
   //   })
   // )
 
@@ -76,10 +78,10 @@ function App() {
           <Sidebar></Sidebar>
         </div>
         <div className='view'>
-          <div  className={clsx(classes.view, classes.headline)}>
+          <div className={clsx(classes.view, classes.headline)}>
             <Headline></Headline>
           </div>
-          <div  className={clsx(classes.view, classes.videoPanel)}>
+          <div className={clsx(classes.view, classes.videoPanel)}>
             <video 
               src={require('./video/light1.mp4')} 
               controls 
@@ -88,7 +90,9 @@ function App() {
                 video
             </video>
           </div>
-
+          <div className={clsx(classes.view, classes.gameflow)}>
+            <LineGameflow></LineGameflow>
+          </div>
         </div>
       </body>
     </div>

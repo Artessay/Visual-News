@@ -5,7 +5,8 @@ function Headline() {
     const {state, dispatch} = useContext(store);
 
     return <div>
-        <p>{state.insight}</p>
+        <br></br>
+        <h2>{state.insight}</h2>
     </div>;
 }
 
