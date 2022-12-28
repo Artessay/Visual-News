@@ -17,6 +17,18 @@ const reducer = (state, action) => {
                 data: newData
             };
         }
+        case 'homeColorSelect': {
+            return {
+                ...state,
+                homeColor: action.payload,
+            };
+        }
+        case 'awayColorSelect': {
+            return {
+                ...state,
+                awayColor: action.payload,
+            };
+        }
         default:
             throw new Error();
     }

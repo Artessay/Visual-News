@@ -74,6 +74,7 @@ function App() {
       <body>
         <div class="sidebar">
           <Sidebar></Sidebar>
+          
         </div>
         <div className='view'>
           <div className={clsx(classes.view, classes.headline)}>
@@ -91,10 +92,11 @@ function App() {
           <div className={clsx(classes.view, classes.gameflow)}>
             <LineGameflow></LineGameflow>
           </div>
+          <div>
+            <br></br>
+          </div>
         </div>
-        <div>
-          <br></br>
-        </div>
+        
       </body>
     </div>
   );
