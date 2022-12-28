@@ -8,6 +8,8 @@ import {makeStyles} from "@material-ui/core";
 import Sidebar from './components/Sidebar';
 import LineChart from './components/LineChart';
 import LineGameflow from './components/Line';
+import ColorButtonHome from './components/ColorButtonHome';
+import ColorButtonAway from './components/ColorButtonAway';
 
 // 这是JSS的写法，相当于声明了一些css的类
 const useStyles = makeStyles(theme => ({
@@ -17,6 +19,14 @@ const useStyles = makeStyles(theme => ({
   //     height: '100vh',
   //     overflow: 'hidden',
   // // },
+  homeSelect: {
+    position: 'absolute',
+    left: 30,
+  },
+  awaySelect: {
+    position: 'absolute',
+    right: 30,
+  },
   view: {
       border: '1px solid black',
       borderRadius: '5px',
@@ -73,9 +83,18 @@ function App() {
       </header>
       <body>
         <div class="sidebar">
-          <Sidebar></Sidebar>
+          <Sidebar>
+          </Sidebar>
+          <h3>颜色选择</h3>
+          <div className={clsx(classes.homeSelect)}>
+            <ColorButtonHome></ColorButtonHome>
+          </div>
+          <div className={clsx(classes.awaySelect)}>
+            <ColorButtonAway></ColorButtonAway>
+          </div>
           
         </div>
+          
         <div className='view'>
           <div className={clsx(classes.view, classes.headline)}>
             <Headline></Headline>

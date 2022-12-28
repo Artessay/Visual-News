@@ -12,11 +12,11 @@ import 'echarts/lib/component/legend'
 import 'echarts/lib/component/markPoint'
 import ReactEcharts from 'echarts-for-react'
 
-import { store } from "../store";
+import { StateProvider, store } from "../store";
 import dataGameflow from '../data/gameflow'
 
 function LineGameflow() {
-    // const {state, dispatch} = useContext(store);
+    const {state, dispatch} = useContext(store);
     
     const getOption = () => {
         const plays = dataGameflow.plays || [];
@@ -59,13 +59,13 @@ function LineGameflow() {
                 {
                     name:'homescore', //坐标点名称
                     type:'line', //线类型
-                    color: 'red',
+                    color: state.homeColor,
                     data: homescore //坐标点数据
                 },
                 {
                     name:'awayscore', //坐标点名称
                     type:'line', //线类型
-                    color: "#00a7d0",
+                    color: state.awayColor,
                     data: awayscore  //坐标点数据
                 }
             ]

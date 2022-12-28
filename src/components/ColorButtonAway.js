@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 import { store } from "../store";
 import ReactEcharts from "echarts-for-react";
 
-function ColorButtonHome() {
+function ColorButtonAway() {
 
     const {state, dispatch} = useContext(store);
     
     const getOption = () =>{
         return{
                 tooltip: {},
-                left:'left',
+                left:'right',
                 animationDurationUpdate: 600,
                 animationEasingUpdate: 'quinticInOut',
                 color: ['#8E83BB'],
@@ -77,17 +77,17 @@ function ColorButtonHome() {
     function  onByCalendarClick(e) {
         console.log(e.value);
           dispatch({
-            type: 'homeColorSelect',
+            type: 'awayColorSelect',
             payload: e.value,
         })  
     }
 
     return (
-        <div id='home-color-button'>
-            <p>主场球队</p>
+        <div id='away-color-button'>
+            <p>客场球队</p>
             <ReactEcharts option={getOption()} onEvents={onclick} />
         </div>
     ) 
 }
 
-export default ColorButtonHome;
+export default ColorButtonAway;
