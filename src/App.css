@@ -43,18 +43,37 @@ li {
   background-color: rgb(214, 255, 205);
 }
 
-/* .view {
+.view {
+  position: absolute;
+  left: 20%;
+  font-size: large;
+}
+
+.viewbox {
   position: relative;
-  top: 10rem;
-  left: 15%;
-} */
+  height: 3.5rem;
+  width: 30rem;
+  font-size: large;
+  padding: 0 0.185rem 0.125rem;
+  border: 1px solid rgba(25, 186, 139, 0.17);
+  border-radius: '5px';
+  margin-bottom: 0.125rem;
+}
 
 .headline {
-  position: 'absolute';
-  top: 70;
-  bottom: 400;
-  left: 15%;
-  right: 70;
+  position: relative;
+  top: 150;
+  height: 100;
+  left: 300;
+  width: 750;
+}
+
+.videoPanel {
+  position: relative;
+  top: 350;
+  height: 100;
+  left: 300;
+  right: 300;
 }
 
 @keyframes App-logo-spin {

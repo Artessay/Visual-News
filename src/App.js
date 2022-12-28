@@ -5,6 +5,7 @@ import Headline from './components/Headline';
 
 import clsx from 'clsx';
 import {makeStyles} from "@material-ui/core";
+import Sidebar from './components/Sidebar';
 
 // 这是JSS的写法，相当于声明了一些css的类
 const useStyles = makeStyles(theme => ({
@@ -13,24 +14,25 @@ const useStyles = makeStyles(theme => ({
   //     width: '100vw',
   //     height: '100vh',
   //     overflow: 'hidden',
-  // },
+  // // },
   view: {
       border: '1px solid black',
       borderRadius: '5px',
   },
   headline: {
-      position: 'absolute',
-      top: 150,
+      position: 'relative',
+      top: 20,
       height: 100,
-      left: 300,
+      width: 750,
+      left: 200,
       right: 300,
   },
   videoPanel: {
-      position: 'absolute',
-      top: 180,
-      bottom: 70,
-      left: 70,
-      width: 100,
+      position: 'relative',
+      top: 40,
+      // bottom: 70,
+      left: 200,
+      width: 750,
   },
   controlPanel: {
       position: 'absolute',
@@ -52,6 +54,17 @@ function App() {
   // 使用上述的css样式
   const classes = useStyles();
 
+  // // 导入视频
+  // const http = require('stream-http');
+  // const fs = require('fs');
+  // http.createServer(
+  //   function(__req, __res) {
+  //     fs.createReadStream('./video/cast1.mp4').pipe(__res)
+  //   }.listen(5842, function() {
+  //     console.log('server is running at http://localhost:5842')
+  //   })
+  // )
+
   return (
     <div className="App">
       <header className="App-header">
@@ -60,16 +73,22 @@ function App() {
       </header>
       <body>
         <div class="sidebar">
-          <br></br>
-          <h1>导航栏</h1>
+          <Sidebar></Sidebar>
         </div>
         <div className='view'>
           <div  className={clsx(classes.view, classes.headline)}>
             <Headline></Headline>
           </div>
-          {/* <div  className={clsx(classes.view, classes.videoPanel)}>
-            <Headline></Headline>
-          </div> */}
+          <div  className={clsx(classes.view, classes.videoPanel)}>
+            <video 
+              src={require('./video/light1.mp4')} 
+              controls 
+              width='100%'
+            >
+                video
+            </video>
+          </div>
+
         </div>
       </body>
     </div>
