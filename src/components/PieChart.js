@@ -11,7 +11,7 @@ function PieChart() {
             title: {
                 top: 0,
                 left: 'center',
-                text: state.zwposition + state.date,
+                text: state.athlete +  " 进球得分情况",
                 textStyle:{
                     fontSize:15,
                     color:'#1C282E',
@@ -20,10 +20,10 @@ function PieChart() {
             tooltip: {
                 trigger: 'item'
             },
-           // legend: {
-               // top: '5%',
-              //  left: 'center'
-         //   },
+            legend: {
+                top: '85%',
+                left: 'center'
+            },
             series: [
                 {
                     name: '进球得分',

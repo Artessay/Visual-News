@@ -11,6 +11,9 @@ import ColorButtonAway from './components/ColorButtonAway';
 import NewsText from './components/NewsText';
 import PieChart from './components/PieChart';
 import Overview from './components/BarChart';
+import BoxTable from './components/Table';
+import PlayerSelector from './components/SelectPlayer';
+import boxscore from './data/boxscore';
 
 // 这是JSS的写法，相当于声明了一些css的类
 const useStyles = makeStyles(theme => ({
@@ -27,6 +30,12 @@ const useStyles = makeStyles(theme => ({
   awaySelect: {
     position: 'absolute',
     right: 30,
+  },
+  playerSelect: {
+    position: 'absolute',
+    top: 500,
+    left: 0,
+    width: '100%',
   },
   view: {
       border: '1px solid black',
@@ -67,15 +76,23 @@ const useStyles = makeStyles(theme => ({
     width: '30%',
   },
   pieChart: {
-    position: 'absolute',
-    top: 1085,
-    left: 300,
+    position: 'relative', //'absolute',
+    top: -150, //1080,
+    left: 450,
+    width: '60%',
+    // height: '60%',
   },
   barChart: {
     position: 'relative',
-    top: 150,
+    top: 0,
     left: 75,
     width: 1000
+  },
+  boxTable: {
+    position: 'relative',
+    top: 80,
+    left: 60,
+    width: '100%'
   },
 }))
 
@@ -84,7 +101,12 @@ function App() {
   const classes = useStyles();
 
   const {state, dispatch} = useContext(store);
-  const imageSrc = './data/' + state.athlete + '.png'
+
+  let m = new Map();
+  const athletes = boxscore.athletes || [];
+  athletes.forEach(element => {
+    m.set(element.athlete.displayName, element.athlete.headshot.href)
+  });
 
   // // 导入视频
   // const http = require('stream-http');
@@ -107,6 +129,19 @@ function App() {
         <div class="sidebar">
           <Sidebar>
           </Sidebar>
+          {/* <form>
+            <input 
+              type="text"
+              value="insight"
+              // onChange={onChange}
+            />
+          </form> */}
+          <div>
+            <h3>观点</h3>
+            <input name='insight'></input>
+            <input type="submit" value="生成"></input>
+          </div>
+          <br></br>
           <h3>颜色选择</h3>
           <div className={clsx(classes.homeSelect)}>
             <ColorButtonHome></ColorButtonHome>
@@ -114,7 +149,10 @@ function App() {
           <div className={clsx(classes.awaySelect)}>
             <ColorButtonAway></ColorButtonAway>
           </div>
-          
+          <div className={clsx(classes.playerSelect)}>
+            <h3>队员选择</h3>
+            <PlayerSelector></PlayerSelector>
+          </div>
         </div>
           
         <div className='view'>
@@ -137,13 +175,17 @@ function App() {
             <NewsText margin='10'></NewsText>
           </div>
           <div className={clsx(classes.playerPhoto)}>
-            <img src={imageSrc} alt=''></img>
+            <img src={m.get(state.athlete)} alt='' width='100%'></img>
           </div>
           <div className={clsx(classes.pieChart)}>
             <PieChart></PieChart>
           </div>
           <div className={clsx(classes.barChart)}>
             <Overview></Overview>
+          </div>
+          <div  className={clsx(classes.boxTable)}>
+            <h1>BoxScore</h1>
+            <BoxTable></BoxTable>
           </div>
           <div>
             <br></br>

@@ -1,7 +1,7 @@
 // 本文件处理数据逻辑
 
 import React, {createContext, useReducer, useEffect} from 'react';
-import {fetchCsvData, fetchJsonData} from "./api";
+import {fetchJsonData} from "./api";
 import initialState from './data';
 import reducer from './reducer';
 

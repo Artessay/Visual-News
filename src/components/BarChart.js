@@ -8,7 +8,7 @@ function Overview() {
     const {state, dispatch} = useContext(store);
 
     const players = boxscore.athletes || [];
-    console.log(players);
+    // console.log(players);
     var athleteName = [];
     var minute = [];
     for (const play of players) {
@@ -29,7 +29,7 @@ function Overview() {
                 data: athleteName,
                 axisLabel:{
                     interval: 0,
-                    rotate: 30,
+                    rotate: 25,
                 },
             },
             yAxis: {

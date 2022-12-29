@@ -76,7 +76,7 @@ function ColorButtonHome() {
 
     function  onByCalendarClick(e) {
         console.log(e.value);
-          dispatch({
+        dispatch({
             type: 'homeColorSelect',
             payload: e.value,
         })  

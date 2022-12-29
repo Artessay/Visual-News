@@ -17,6 +17,7 @@ const reducer = (state, action) => {
                 data: newData
             };
         }
+
         case 'homeColorSelect': {
             return {
                 ...state,
@@ -29,6 +30,14 @@ const reducer = (state, action) => {
                 awayColor: action.payload,
             };
         }
+        
+        case 'playerSelect': {
+            return {
+                ...state,
+                athlete: action.payload,
+            };
+        }
+
         default:
             throw new Error();
     }

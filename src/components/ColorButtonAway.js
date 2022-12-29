@@ -76,7 +76,7 @@ function ColorButtonAway() {
 
     function  onByCalendarClick(e) {
         console.log(e.value);
-          dispatch({
+        dispatch({
             type: 'awayColorSelect',
             payload: e.value,
         })  
