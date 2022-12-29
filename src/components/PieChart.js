@@ -1,18 +1,15 @@
 import React, { useContext } from 'react';
 import { store } from "../store";
 import ReactEcharts from "echarts-for-react";
-import 'echarts/map/js/china';
-import * as echarts from 'echarts';
 
 function PieChart() {
-    const {state, dispatch} = useContext(store);
-    const data = state.data[state.position] || [];
+    const {state, } = useContext(store);
 
 
     const getOption = () =>{
         return{
             title: {
-                top: 5,
+                top: 0,
                 left: 'center',
                 text: state.zwposition + state.date,
                 textStyle:{
@@ -29,12 +26,12 @@ function PieChart() {
          //   },
             series: [
                 {
-                    name: '访问来源',
+                    name: '进球得分',
                     type: 'pie',
                     radius: ['40%', '70%'],
                     avoidLabelOverlap: false,
                     itemStyle: {
-                        borderRadius: 10,
+                        borderRadius: 50,
                         borderColor: '#fff',
                         borderWidth: 2
                     },
@@ -45,7 +42,7 @@ function PieChart() {
                     emphasis: {
                         label: {
                             show: true,
-                            fontSize: '40',
+                            fontSize: '30',
                             fontWeight: 'bold'
                         }
                     },
@@ -53,11 +50,9 @@ function PieChart() {
                         show: false
                     },
                     data: [
-                        {value: 2013, name: '2013'},
-                        {value: 2014, name: '2014'},
-                        {value: 2015, name: '2015'},
-                        {value: 2016, name: '2016'},
-                        {value: 2017, name: '2017'}
+                        {value: 11*2, name: 'short'},
+                        {value: 6*3, name: 'long'},
+                        {value: 10*1, name: 'penalty'},
                     ]
                 }
             ]
@@ -73,7 +68,7 @@ function PieChart() {
     //         payload: e.name,
     // })   
     //  } 
-    return <ReactEcharts option={getOption()} style={{height: '100%',width : '100%'}}  onEvents={onclick} />
+    return <ReactEcharts option={getOption()}  onEvents={onclick} />
 }
 
 export default PieChart;

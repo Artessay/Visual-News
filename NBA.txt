@@ -1,0 +1,12 @@
+MIN: 上场时间（Minute）
+FG：投篮命中数（Field Goal）
+3PT：三分球
+FT：罚球命中数
+OREB：前场篮板球
+DREB：防守篮板球
+REB：篮板球
+AST：助攻
+STL：抢断
+BLK：盖帽
+TO：失误
+PF：个人犯规

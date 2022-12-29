@@ -3,6 +3,8 @@
 const initialState = {
     count: 0,
     insight: "Luka is the best player in the world",
+    homeTeam: "Dallas Mavericks",
+    awayTeam: "",
     homeColor: "red",
     awayColor: "blue",
     news: "",

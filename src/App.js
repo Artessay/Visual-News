@@ -67,16 +67,15 @@ const useStyles = makeStyles(theme => ({
     width: '30%',
   },
   pieChart: {
-    position: 'relative',
-    top: 100,
-    left: 600,
-    width: '60%',
+    position: 'absolute',
+    top: 1085,
+    left: 300,
   },
   barChart: {
     position: 'relative',
     top: 150,
-    left: 100,
-    // width: 100
+    left: 75,
+    width: 1000
   },
 }))
 

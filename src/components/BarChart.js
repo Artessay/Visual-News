@@ -2,11 +2,13 @@ import React, { useContext } from 'react';
 import { store } from "../store";
 import ReactEcharts from "echarts-for-react";
 import boxscore from '../data/boxscore';
+// import { StateProvider } from '../store';
 
 function Overview() {
     const {state, dispatch} = useContext(store);
 
     const players = boxscore.athletes || [];
+    console.log(players);
     var athleteName = [];
     var minute = [];
     for (const play of players) {
@@ -16,9 +18,19 @@ function Overview() {
     
     const getOption = () => {
         return {
+            title: [
+                {
+                    text: state.homeTeam + " 队员出场时间",
+                    left: 'center',
+                }
+            ],
             xAxis: {
                 type: 'category',
                 data: athleteName,
+                axisLabel:{
+                    interval: 0,
+                    rotate: 30,
+                },
             },
             yAxis: {
                 type: 'value'
@@ -35,7 +47,7 @@ function Overview() {
     };
 
     return <div>
-        <ReactEcharts option={getOption()} />;
+        <ReactEcharts option={getOption()} />
     </div>
 }
 
