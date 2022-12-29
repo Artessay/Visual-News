@@ -9,6 +9,7 @@ import Sidebar from './components/Sidebar';
 import LineGameflow from './components/Line';
 import ColorButtonHome from './components/ColorButtonHome';
 import ColorButtonAway from './components/ColorButtonAway';
+import NewsText from './components/NewsText';
 
 // 这是JSS的写法，相当于声明了一些css的类
 const useStyles = makeStyles(theme => ({
@@ -51,18 +52,27 @@ const useStyles = makeStyles(theme => ({
       left: 200,
       width: 750,
   },
-  detailView: {
-      position: 'absolute',
-      bottom: 70,
-      height: 320,
-      left: 180,
-      right: 70,
+  newsText: {
+    position: 'relative',
+    top: 100,
+    left: 200,
+    width: 750,
+    // backgroundColor: 'gray'
+  },
+  playerPhoto: {
+    position: 'relative',
+    top: 100,
+    left: 200,
+    width: '30%',
   },
 }))
 
 function App() {
   // 使用上述的css样式
   const classes = useStyles();
+
+  const {state, dispatch} = useContext(store);
+  const imageSrc = './data/' + state.athlete + '.png'
 
   // // 导入视频
   // const http = require('stream-http');
@@ -101,7 +111,7 @@ function App() {
           </div>
           <div className={clsx(classes.view, classes.videoPanel)}>
             <video 
-              src={require('./video/light1.mp4')} 
+              src={require('./video/game.mp4')} 
               controls // 控制panel current
               width='100%'
             >
@@ -111,8 +121,14 @@ function App() {
           <div className={clsx(classes.view, classes.gameflow)}>
             <LineGameflow></LineGameflow>
           </div>
+          <div className={clsx(classes.newsText)}>
+            <NewsText margin='10'></NewsText>
+          </div>
+          <div className={clsx(classes.playerPhoto)}>
+            <img src={imageSrc} alt=''></img>
+          </div>
           <div>
-
+            
           </div>
           <div>
             <br></br>

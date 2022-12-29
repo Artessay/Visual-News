@@ -79,6 +79,12 @@ li {
   right: 300;
 }
 
+.news {
+  /* position: relative; */
+  text-align: left;
+  /* left: 10; */
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

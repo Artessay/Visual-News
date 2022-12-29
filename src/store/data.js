@@ -5,6 +5,8 @@ const initialState = {
     insight: "Luka is the best player in the world",
     homeColor: "red",
     awayColor: "blue",
+    news: "",
+    athlete: "Luka Doncic", // "Christian Wood",
     data: null
 };
 

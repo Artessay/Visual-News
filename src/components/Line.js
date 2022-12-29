@@ -44,15 +44,21 @@ function LineGameflow() {
             },
             tooltip:{ //提示框组件
                 trigger: 'axis',
-                formatter: function(arg) {
-                    return `{a} <br/>{b} : {c} ({d}%)`
-                }
+                // formatter: function(arg) {
+                //     return (
+                //         'homescore: ' + arg.homescore
+                //     )
+                // }
             },
             xAxis: { //X轴坐标值
                 data: xaxis
             },
             yAxis: {
                 type: 'value' //数值轴，适用于连续数据
+            },
+            data: {
+                homescore: homescore,
+                awayscore: awayscore,
             },
             series : [
                 {
