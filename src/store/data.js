@@ -8,7 +8,7 @@ const initialState = {
     homeColor: "red",
     awayColor: "blue",
     news: "",
-    athlete: "Luka Doncic", // "Christian Wood",
+    athlete: "Christian Wood", // "Christian Wood",
     data: null
 };
 
