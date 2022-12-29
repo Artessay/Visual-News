@@ -8,7 +8,7 @@ function ColorButtonAway() {
     
     const getOption = () =>{
         return{
-                tooltip: {},
+                // tooltip: {},
                 left:'right',
                 animationDurationUpdate: 600,
                 animationEasingUpdate: 'quinticInOut',

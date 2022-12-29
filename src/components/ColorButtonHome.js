@@ -8,7 +8,7 @@ function ColorButtonHome() {
     
     const getOption = () =>{
         return{
-                tooltip: {},
+                // tooltip: {},
                 left:'left',
                 animationDurationUpdate: 600,
                 animationEasingUpdate: 'quinticInOut',
