@@ -1355,3 +1355,5 @@ let boxscore = {
     }
   ]
 }
+
+export default boxscore;

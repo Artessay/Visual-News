@@ -1,8 +1,7 @@
 import './App.css';
+import React, { useContext } from 'react'
 import Headline from './components/Headline';
-// import Overview from './components/Overview';
-
-
+import { store } from "./store";
 import clsx from 'clsx';
 import {makeStyles} from "@material-ui/core";
 import Sidebar from './components/Sidebar';
@@ -10,6 +9,8 @@ import LineGameflow from './components/Line';
 import ColorButtonHome from './components/ColorButtonHome';
 import ColorButtonAway from './components/ColorButtonAway';
 import NewsText from './components/NewsText';
+import PieChart from './components/PieChart';
+import Overview from './components/BarChart';
 
 // 这是JSS的写法，相当于声明了一些css的类
 const useStyles = makeStyles(theme => ({
@@ -64,6 +65,18 @@ const useStyles = makeStyles(theme => ({
     top: 100,
     left: 200,
     width: '30%',
+  },
+  pieChart: {
+    position: 'relative',
+    top: 100,
+    left: 600,
+    width: '60%',
+  },
+  barChart: {
+    position: 'relative',
+    top: 150,
+    left: 100,
+    // width: 100
   },
 }))
 
@@ -127,8 +140,11 @@ function App() {
           <div className={clsx(classes.playerPhoto)}>
             <img src={imageSrc} alt=''></img>
           </div>
-          <div>
-            
+          <div className={clsx(classes.pieChart)}>
+            <PieChart></PieChart>
+          </div>
+          <div className={clsx(classes.barChart)}>
+            <Overview></Overview>
           </div>
           <div>
             <br></br>
