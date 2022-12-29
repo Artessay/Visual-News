@@ -12,7 +12,7 @@ function ColorButtonAway() {
                 left:'right',
                 animationDurationUpdate: 600,
                 animationEasingUpdate: 'quinticInOut',
-                color: ['#8E83BB'],
+                color: [state.awayColor],
                 series: [
                     {
                         type: 'graph',
@@ -84,7 +84,7 @@ function ColorButtonAway() {
 
     return (
         <div id='away-color-button'>
-            <p>客场球队</p>
+            <p>Away Team</p>
             <ReactEcharts option={getOption()} onEvents={onclick} />
         </div>
     ) 

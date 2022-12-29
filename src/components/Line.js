@@ -29,6 +29,10 @@ function LineGameflow() {
             texts.push(play.text);
         }
         
+        
+        let dotHtml1 = "<div text-align='right'>";    // 定义第一个数据前的圆点颜色
+        var dotHtml2 = '</div>';    // 定义第二个数据前的圆点颜色
+
         let option = {
             title: {  //标题
                 text: 'Gameflow',
@@ -43,12 +47,28 @@ function LineGameflow() {
                 right: 50,
             },
             tooltip:{ //提示框组件
+                show: true,
+                showContent: true,
+                alwaysShowContent: true,
+                position: ['0%', '-20%'],
                 trigger: 'axis',
-                // formatter: function(arg) {
-                //     return (
-                //         'homescore: ' + arg.homescore
-                //     )
-                // }
+                backgroundColor: '#f9f8f4',
+                textStyle: {
+                    color: '#000',     // 文字的颜色
+                    // fontStyle: 'normal',    // 文字字体的风格（'normal'，无样式；'italic'，斜体；'oblique'，倾斜字体） 
+                    // fontWeight: 'normal',    // 文字字体的粗细（'normal'，无样式；'bold'，加粗；'bolder'，加粗的基础上再加粗；'lighter'，变细；数字定义粗细也可以，取值范围100至700）
+                    // fontSize: '20',    // 文字字体大小
+                    // lineHeight: '50',    // 行高 
+                    textAlign: 'right',
+                },
+                formatter: function(arg) {
+                    return (
+                        dotHtml1 + 
+                        'HOU: ' + arg[0].value + ' - DAL: ' + arg[1].value + '<br/>'
+                        + texts[arg[0].dataIndex] + '<br/>'
+                        + dotHtml2
+                    )
+                }
             },
             xAxis: { //X轴坐标值
                 data: xaxis
@@ -59,6 +79,7 @@ function LineGameflow() {
             data: {
                 homescore: homescore,
                 awayscore: awayscore,
+                text: texts,
             },
             series : [
                 {

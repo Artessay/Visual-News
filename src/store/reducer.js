@@ -38,6 +38,12 @@ const reducer = (state, action) => {
             };
         }
 
+        case 'searchNews': {
+            return {
+                ...state,
+                isSearched: true,
+            }
+        }
         default:
             throw new Error();
     }

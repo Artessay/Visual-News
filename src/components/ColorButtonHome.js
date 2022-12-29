@@ -12,7 +12,7 @@ function ColorButtonHome() {
                 left:'left',
                 animationDurationUpdate: 600,
                 animationEasingUpdate: 'quinticInOut',
-                color: ['#8E83BB'],
+                color: [state.homeColor],
                 series: [
                     {
                         type: 'graph',
@@ -27,6 +27,7 @@ function ColorButtonHome() {
                         edgeLabel: {
                             fontSize: 20
                         },
+                        // color: ['#8E83BB', 'blue', 'yellow'],
                         data: [{
                             value: 'red',
                             name: '红色',
@@ -84,7 +85,7 @@ function ColorButtonHome() {
 
     return (
         <div id='home-color-button'>
-            <p>主场球队</p>
+            <p>Home Team</p>
             <ReactEcharts option={getOption()} onEvents={onclick} />
         </div>
     ) 

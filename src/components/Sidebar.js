@@ -31,7 +31,7 @@ function Sidebar() {
     return (
         <div>
             <br></br>
-            <h1>导航栏</h1>
+            <h2>Interactive Edit</h2>
             <br></br>
             {/* <Search
                 value = {}
