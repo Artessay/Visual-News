@@ -136,6 +136,7 @@ function App() {
               // onChange={onChange}
             />
           </form> */}
+                    
           <div>
             <h3>观点</h3>
             <input name='insight'></input>
